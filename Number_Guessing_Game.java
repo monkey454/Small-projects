@@ -39,6 +39,15 @@ class Number_Guessing_Game {
             System.out.println("Do you want to play again? (yes/no)");
             String response = scan.next();
 
+            while(true){
+                response = scan.next();
+                if(response.equalsIgnoreCase("yes")||response.equalsIgnoreCase("no")){
+                    break;}
+                else{
+                    System.out.println("Invalid Input! Please enter valid Input");
+                }
+            }
+
             if (response.equalsIgnoreCase("no")) {
                 PlayAgain = false; // Stop the loop if user doesn't want to play again
                 System.out.println("Thanks for playing!");
