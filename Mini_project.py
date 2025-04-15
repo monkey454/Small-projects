@@ -39,9 +39,9 @@ def is_palindrome(text):
     cleaned =text.replace(" ","").lower()
     check = cleaned == cleaned[::-1]
     if check:
-        print("✅ Entered sentance is Palindrome") 
+        print("✅ Entered sentence is Palindrome") 
     else:
-        print("❌ Entered sentance is not Palindrome")
+        print("❌ Entered sentence is not Palindrome")
     
 def is_unique(text):
     slipted_text = text.split()
@@ -65,11 +65,29 @@ def main_function():
         choice = input("\n➡️  Enter your choice: ")
         
         if choice == "1":
-            user_input = input("✍️  Enter a sentence: ")
-            is_palindrome(user_input)
+            while True:
+    
+                    user_input = input("✍️  Enter a sentence: ").strip()
+                    if not user_input:
+                        print("⚠️ Input cannot be empty. Try again.")
+                    elif not any(char.isalpha() for char in user_input):
+                        print("⚠️ Input must contain letters. Numbers-only input is not allowed.")
+                    else:
+                        is_palindrome(user_input)
+                        break
+
         elif choice == "2":
-            user_input = input("✍️  Enter a sentence: ")
-            is_unique(user_input)
+            while True:
+                user_input = input("✍️  Enter a sentence: ").strip()
+
+                if not user_input:
+                    print("⚠️ Input cannot be empty. Try again.")
+                elif not any(char.isalpha() for char in user_input):
+                    print("⚠️ Input must contain letters. Numbers-only input is not allowed.")
+                else:
+                    is_unique(user_input)
+                    break
+
         elif choice == "3":
             limit = int(input("🔢 Enter the limit of the list: "))
             number = []
@@ -77,6 +95,7 @@ def main_function():
                 elements = int(input("➕ Enter the elements in the list: "))
                 number.append(elements)
             list_filter(number)
+
         elif choice == "4":
             print("👋 Exiting the program...")
             break
